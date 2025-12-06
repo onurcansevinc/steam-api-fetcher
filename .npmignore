@@ -1,0 +1,35 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Configuration
+tsconfig.json
+.gitignore
+
+# Development
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+test/
+tests/
+*.test.ts
+*.spec.ts
+coverage/
+
+# Documentation
+docs/
+
+# Examples
+examples/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
