@@ -31,7 +31,7 @@ const api = new SteamAPI({
 });
 
 // Fetch TF2 inventory
-const result = await api.get(
+const result = await api.getPlayerInventory(
     '76561199099521803', // SteamID64
     440, // TF2 appid
     2, // contextid
@@ -79,7 +79,7 @@ interface SteamAPIOptions {
 
 ### Methods
 
-#### `get(steamid, appid, contextid, tradableOnly?, retries?, language?)`
+#### `getPlayerInventory(steamid, appid, contextid, tradableOnly?, retries?, language?)`
 
 Fetches a user's inventory for a specific game.
 
@@ -105,7 +105,7 @@ interface InventoryResult {
 **Example:**
 
 ```typescript
-const result = await api.get('76561199099521803', 440, 2, false, 2, 'english');
+const result = await api.getPlayerInventory('76561199099521803', 440, 2, false, 2, 'english');
 
 // Access items
 result.inventory.forEach((item) => {
@@ -182,7 +182,7 @@ The library throws `SteamAPIError` for API-related errors:
 import { SteamAPIError } from 'steam-inventory-fetcher';
 
 try {
-    const result = await api.get('76561199099521803', 440, 2);
+    const result = await api.getPlayerInventory('76561199099521803', 440, 2);
 } catch (err) {
     if (err instanceof SteamAPIError) {
         console.error('Status:', err.statusCode);
@@ -279,7 +279,7 @@ const results = [];
 
 for (const steamID of steamIDs) {
     try {
-        const result = await api.get(steamID, 440, 2);
+        const result = await api.getPlayerInventory(steamID, 440, 2);
         results.push({ steamID, success: true, count: result.inventory.length });
     } catch (err) {
         results.push({ steamID, success: false, error: err.message });
@@ -292,7 +292,7 @@ for (const steamID of steamIDs) {
 
 ```typescript
 // Get only tradable items
-const result = await api.get('76561199099521803', 440, 2, true);
+const result = await api.getPlayerInventory('76561199099521803', 440, 2, true);
 
 console.log(`Tradable items: ${result.inventory.length}`);
 ```
@@ -307,7 +307,7 @@ const games = [
 ];
 
 for (const game of games) {
-    const result = await api.get('76561199099521803', game.appid, game.contextid);
+    const result = await api.getPlayerInventory('76561199099521803', game.appid, game.contextid);
     console.log(`${game.name}: ${result.inventory.length} items`);
 }
 ```

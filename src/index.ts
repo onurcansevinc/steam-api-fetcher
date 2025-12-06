@@ -115,7 +115,7 @@ export class SteamAPI {
     }
 
     // Get the contents of a users inventory. Designed to be the same as DoctorMcKay's getUserInventoryContents from node-steamcommunity (with retries)
-    public async get(
+    public async getPlayerInventory(
         steamid: SteamID | string,
         appid: number,
         contextid: number,

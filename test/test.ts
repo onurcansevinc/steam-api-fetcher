@@ -15,7 +15,7 @@ async function exampleSingleFetch() {
 
     try {
         const startTime = Date.now();
-        const result = await api.get(
+        const result = await api.getPlayerInventory(
             '76561199099521803', // Example SteamID64
             440, // TF2 appid
             2, // default contextid
@@ -86,7 +86,7 @@ async function exampleMultipleFetches() {
 
         try {
             const startTime = Date.now();
-            const result = await api.get(steamID, 440, 2, false, 2, 'english');
+            const result = await api.getPlayerInventory(steamID, 440, 2, false, 2, 'english');
             const duration = Date.now() - startTime;
 
             results.push({
@@ -144,7 +144,14 @@ async function exampleDifferentGames() {
         console.log(`\nFetching ${game.name} inventory...`);
 
         try {
-            const result = await api.get(steamID, game.appid, game.contextid, false, 2, 'english');
+            const result = await api.getPlayerInventory(
+                steamID,
+                game.appid,
+                game.contextid,
+                false,
+                2,
+                'english'
+            );
             console.log(`✅ ${game.name}: ${result.inventory.length} items`);
         } catch (err: any) {
             console.error(`❌ ${game.name}: ${err.message}`);
@@ -166,10 +173,24 @@ async function exampleTradableOnly() {
 
     try {
         // Get all items
-        const allItems = await api.get('76561199099521803', 440, 2, false, 2, 'english');
+        const allItems = await api.getPlayerInventory(
+            '76561199099521803',
+            440,
+            2,
+            false,
+            2,
+            'english'
+        );
 
         // Get only tradable items
-        const tradableOnly = await api.get('76561199099521803', 440, 2, true, 2, 'english');
+        const tradableOnly = await api.getPlayerInventory(
+            '76561199099521803',
+            440,
+            2,
+            true,
+            2,
+            'english'
+        );
 
         console.log(`All items: ${allItems.inventory.length}`);
         console.log(`Tradable items: ${tradableOnly.inventory.length}`);
@@ -196,7 +217,14 @@ async function exampleWithProxy() {
     });
 
     try {
-        const result = await api.get('76561199099521803', 440, 2, false, 2, 'english');
+        const result = await api.getPlayerInventory(
+            '76561199099521803',
+            440,
+            2,
+            false,
+            2,
+            'english'
+        );
         console.log('✅ Success with proxy!');
         console.log('Items:', result.inventory.length);
     } catch (err: any) {
@@ -219,7 +247,7 @@ async function examplePerformanceTest() {
     for (let i = 0; i < iterations; i++) {
         try {
             const startTime = Date.now();
-            await api.get('76561199099521803', 440, 2, false, 2, 'english');
+            await api.getPlayerInventory('76561199099521803', 440, 2, false, 2, 'english');
             const duration = Date.now() - startTime;
             times.push(duration);
             console.log(`Run ${i + 1}: ${duration}ms`);
