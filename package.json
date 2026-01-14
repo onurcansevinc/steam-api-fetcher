@@ -1,6 +1,6 @@
 {
     "name": "steam-api-fetcher",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A TypeScript library for fetching Steam user inventories and player data with proxy support and retry mechanisms",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
