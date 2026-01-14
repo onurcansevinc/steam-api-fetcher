@@ -130,13 +130,9 @@ export class SteamAPI {
         let steamIDObj: SteamID;
         try {
             steamIDObj = typeof steamid === 'string' ? new SteamID(steamid) : steamid;
-            if (!steamIDObj.isValid()) {
-                throw new Error("The user's SteamID is invalid.");
-            }
+            if (!steamIDObj.isValid()) throw new Error("The user's SteamID is invalid.");
         } catch (err) {
-            if (err instanceof Error) {
-                throw err;
-            }
+            if (err instanceof Error) throw err;
             throw new Error("The user's SteamID is invalid.");
         }
 

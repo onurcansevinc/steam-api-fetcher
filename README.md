@@ -1,4 +1,4 @@
-# steam-inventory-fetcher
+# steam-api-fetcher
 
 A TypeScript library for fetching Steam user inventories and player data with proxy support and retry mechanisms.
 
@@ -15,7 +15,7 @@ A TypeScript library for fetching Steam user inventories and player data with pr
 ## Installation
 
 ```bash
-npm install steam-inventory-fetcher
+npm install steam-api-fetcher
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install steam-inventory-fetcher
 ### Basic Inventory Fetch
 
 ```typescript
-import SteamAPI from 'steam-inventory-fetcher';
+import SteamAPI from 'steam-api-fetcher';
 
 const api = new SteamAPI({
     requestTimeout: 10000,
@@ -47,7 +47,7 @@ console.log(`Total count: ${result.total_inventory_count}`);
 ### Get Player Summaries
 
 ```typescript
-import SteamAPI from 'steam-inventory-fetcher';
+import SteamAPI from 'steam-api-fetcher';
 
 const api = new SteamAPI({
     apiKey: 'YOUR_STEAM_WEB_API_KEY', // Get from https://steamcommunity.com/dev/apikey
@@ -179,7 +179,7 @@ const api = new SteamAPI({
 The library throws `SteamAPIError` for API-related errors:
 
 ```typescript
-import { SteamAPIError } from 'steam-inventory-fetcher';
+import { SteamAPIError } from 'steam-api-fetcher';
 
 try {
     const result = await api.getPlayerInventory('76561199099521803', 440, 2);
@@ -266,7 +266,7 @@ import SteamAPI, {
     PlayerSummary,
     SteamAPIError,
     CEconItem,
-} from 'steam-inventory-fetcher';
+} from 'steam-api-fetcher';
 ```
 
 ## Examples
